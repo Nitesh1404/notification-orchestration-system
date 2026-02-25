@@ -1,0 +1,56 @@
+############################
+# Maven
+############################
+/target/
+**/target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+############################
+# Spring Boot
+############################
+*.log
+logs/
+spring.log
+
+############################
+# Eclipse
+############################
+.project
+.classpath
+.settings/
+.metadata/
+
+############################
+# IntelliJ IDEA
+############################
+.idea/
+*.iml
+*.ipr
+*.iws
+
+############################
+# VS Code
+############################
+.vscode/
+
+############################
+# OS Files
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# Compiled class files
+############################
+*.class
+
+############################
+# Temporary files
+############################
+*.swp
+*.swo
+*~
