@@ -3,9 +3,9 @@ package com.notification.dto;
 import lombok.Data;
 
 @Data
-public class RespAPi {
+public class RespApi {
 	private String status;
 	private String statusDesc;
-	private String notificationId;
+	private String eventId;
 
 }
