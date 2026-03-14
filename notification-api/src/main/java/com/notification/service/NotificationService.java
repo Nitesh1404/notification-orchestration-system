@@ -50,7 +50,7 @@ public class NotificationService {
 		/*
 		 * Save Notification Event
 		 * 1. It will save in Notification_event tables and 
-		 * 2. Notification_channel Table due to JPA cCascadeType.ALL
+		 * 2. Notification_channel Table due to JPA CascadeType.ALL
 		 */
 		eventRepository.save(event);
 		
