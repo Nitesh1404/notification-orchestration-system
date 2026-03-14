@@ -35,7 +35,7 @@ public class NotificationService {
 		
 		RespApi respApi = new RespApi();
 		
-		/* validate the incoming request*/
+		/* validate the incoming request */
 		validateRequest(reqApi);
 		
 		/*check for duplicate request*/
