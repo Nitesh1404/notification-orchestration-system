@@ -6,4 +6,20 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>notification-msg-processor</artifactId>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>com.notification</groupId>
+      <artifactId>notification-api</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.notification</groupId>
+      <artifactId>notification-commons</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+  </dependencies>
 </project>
