@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.notification.entity.ProviderConfig;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ProviderConfigRepository extends JpaRepository<ProviderConfig, Long> {
 	
 	@Query("""

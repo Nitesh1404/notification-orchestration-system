@@ -45,5 +45,5 @@ public class NotificationAttempt {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "channel_id")
-    private NotificationChannel channel;
+    private NotificationChannelReq channel;
 }

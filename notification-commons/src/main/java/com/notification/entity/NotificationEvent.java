@@ -29,32 +29,32 @@ import lombok.Setter;
 @Builder
 public class NotificationEvent {
 
-	 @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	    @Column(name = "event_id", unique = true, nullable = false)
-	    private String eventId;
+    @Column(name = "event_id", unique = true, nullable = false)
+    private String eventId;
 
-	    @Column(name = "client_id", nullable = false)
-	    private String clientId;
+    @Column(name = "client_id", nullable = false)
+    private String clientId;
 
-	    @Column(name = "event_type", nullable = false)
-	    private String eventType;
+    @Column(name = "event_type", nullable = false)
+    private String eventType;
 
-	    @Column(name = "overall_status", nullable = false)
-	    private String status;
+    @Column(name = "overall_status", nullable = false)
+    private String status;
 
-	    @Column(name = "reference_id")
-	    private String referenceId;
+    @Column(name = "reference_id")
+    private String referenceId;
 
-	    @Column(name = "idempotency_key", unique = true)
-	    private String idempotencyKey;
+    @Column(name = "idempotency_key", unique = true)
+    private String idempotencyKey;
 
-	    private LocalDateTime createdAt;
-	    private LocalDateTime updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
-	    // Business-key mapping
-	    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	    private List<NotificationChannelReq> channels;
+    // Business-key mapping
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<NotificationChannelReq> channels;
 }
