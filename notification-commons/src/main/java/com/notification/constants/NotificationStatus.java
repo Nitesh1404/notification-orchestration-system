@@ -10,8 +10,9 @@ public enum NotificationStatus {
     RETRYING("Retrying", "Attempting to resend."),
     CANCELLED("Stopped", "The notification was cancelled."),
     PENDING("Awaiting", "Awaiting further action."),
-    RECIEVED("Delivered", "Successfully received."),
-    SUCCESS("Completed", "The process completed successfully.");
+    RECEIVED("Received", "Successfully received."),
+    SUCCESS("Completed", "The process completed successfully."),
+    DELIVERED("Delivered", "Message delivered successfully.");
 
     private final String status;
     private final String description;

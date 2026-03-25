@@ -49,6 +49,7 @@
 		<module>notification-commons</module>
 		<module>notification-msg-processor</module>
 		<module>notification-webhook</module>
+		<module>provider-stub</module>
 	</modules>
 
 

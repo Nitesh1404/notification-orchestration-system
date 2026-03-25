@@ -31,5 +31,7 @@ public interface NotificationChannelRepository extends JpaRepository<Notificatio
             """)
     List<String> findStatusesByEventId(Long eventId);
 
+    Optional<NotificationChannelReq> findByProviderRefId(String providerRefId);
+
 
 }

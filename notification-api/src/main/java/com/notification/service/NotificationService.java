@@ -55,8 +55,8 @@ public class NotificationService {
 		eventRepository.save(event);
 		
 		/*Building final response*/
-		respApi.setStatus(NotificationStatus.RECIEVED.getStatus());
-		respApi.setStatusDesc(NotificationStatus.RECIEVED.getDescription());
+		respApi.setStatus(NotificationStatus.RECEIVED.getStatus());
+		respApi.setStatusDesc(NotificationStatus.RECEIVED.getDescription());
 		respApi.setEventId(event.getEventId());
 		
 		return respApi;
