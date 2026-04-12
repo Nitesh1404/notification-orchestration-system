@@ -46,7 +46,7 @@ public class MsgProcessorService {
     @Autowired
     private WebClient webClient;
 
-    private Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     public void processPendingNotification() {
         log.info("Processing for pending notification begin ");
@@ -62,7 +62,7 @@ public class MsgProcessorService {
     @Transactional
     private void sendRequest(NotificationChannelReq notificationChannelReq) {
 
-        ProviderResponse response = new ProviderResponse();
+        ProviderResponse providerResponse = new ProviderResponse();
 
         try {
 
@@ -86,13 +86,13 @@ public class MsgProcessorService {
 
             /*Call the provider*/
 
-            response = webClient.post().uri(providerUrl)
+            providerResponse = webClient.post().uri(providerUrl)
                     .bodyValue(providerRequest)
                     .retrieve()
                     .bodyToMono(ProviderResponse.class)
                     .block();
 
-            log.info("Response Receive from Provider : " + new Gson().toJson(response));
+            log.info("Response Receive from Provider : {}" , gson.toJson(providerResponse));
 
             /*Insert into Notification Attempt*/
             NotificationAttempt lastAttempt = attemptRepository.findTopByChannelIdOrderByAttemptNumberDesc(notificationChannelReq.getId());
@@ -102,9 +102,9 @@ public class MsgProcessorService {
             NotificationAttempt attempt = new NotificationAttempt();
             attempt.setAttemptNumber(nextAttempt);
             attempt.setRequestPayload(gson.toJson(providerRequest));
-            attempt.setResponsePayload(gson.toJson(response));
+            attempt.setResponsePayload(gson.toJson(providerResponse));
             attempt.setProvider(providers.get(0).getProviderName());
-            attempt.setStatus(response.getStatus());
+            attempt.setStatus(providerResponse.getStatus());
             attempt.setChannel(notificationChannelReq);
             attempt.setCreatedAt(LocalDateTime.now());
 
@@ -112,7 +112,7 @@ public class MsgProcessorService {
             attemptRepository.save(attempt);
 
             //update channel
-            if (response.getStatus().equals(NotificationStatus.SUCCESS.toString())) {
+            if (providerResponse.getStatus().equals(NotificationStatus.SUCCESS.toString())) {
                 notificationChannelReq.setStatus(NotificationStatus.SUCCESS.toString());
             } else {
                 notificationChannelReq.setStatus(NotificationStatus.FAILED.toString());

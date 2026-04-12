@@ -29,7 +29,7 @@ public class NotificationService {
 	@Autowired
 	private NotificationEventRepository eventRepository;
 	
-	private Gson gson = new Gson();
+	private final Gson gson = new Gson();
 
 	public RespApi process(ReqApi reqApi) {
 		
@@ -43,9 +43,9 @@ public class NotificationService {
 		
 		NotificationEvent event = buildNotificationEvent(reqApi);
 		
-		List<NotificationChannelReq> channles = buildListChannels(reqApi ,event);
+		List<NotificationChannelReq> channels = buildListChannels(reqApi ,event);
 		
-		event.setChannels(channles);
+		event.setChannels(channels);
 		
 		/*
 		 * Save Notification Event
@@ -88,7 +88,7 @@ public class NotificationService {
 	}
 	
 	private void checkDuplicate(ReqApi reqApi) {
-		log.info("Checking duplicate request for key : " + reqApi.getIdempotencyKey());
+		log.info("Checking duplicate request for key : {}" , reqApi.getIdempotencyKey());
 		
 		String idempotencyKey = reqApi.getIdempotencyKey();
 		boolean isExist = eventRepository.existsByIdempotencyKey(idempotencyKey);
@@ -110,7 +110,7 @@ public class NotificationService {
 		notificationEvent.setCreatedAt(LocalDateTime.now());
 		notificationEvent.setUpdatedAt(LocalDateTime.now());
 		
-		log.info("Generated Notification Event is : " + gson.toJson(notificationEvent));
+		log.info("Generated Notification Event is : {}" , gson.toJson(notificationEvent));
 		
 		return notificationEvent;
 	}

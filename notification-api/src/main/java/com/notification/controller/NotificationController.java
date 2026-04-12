@@ -24,11 +24,11 @@ public class NotificationController {
 	@PostMapping("${api.notification.endpoint}")
 	public ResponseEntity<RespApi> notification(@PathVariable ReqApi requestMsg){
 		
-		log.info("Request recieved for notification : " + requestMsg);
+		log.info("Request received for notification : {}" , requestMsg);
 		
 		RespApi respApi = notificationService.process(requestMsg);
 		
-		log.info("Request processed successfully : " + new Gson().toJson(respApi));
+		log.info("Request processed successfully : {} " , new Gson().toJson(respApi));
 		
 		return ResponseEntity.status(HttpStatus.OK).body(respApi);
 	}

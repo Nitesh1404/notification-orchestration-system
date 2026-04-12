@@ -8,6 +8,10 @@ pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.next
 release.properties
+db.env
+.env
+/.env/
+/db.env/
 
 ############################
 # Spring Boot
